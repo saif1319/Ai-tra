@@ -22,7 +22,7 @@ def send_telegram_message(message):
 
 # 🔹 Function to check trade opportunity
 def check_trade_opportunity():
-    trading_pairs = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT"]  # ✅ Add your preferred symbols
+    trading_pairs = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT","TRUMPUSDT","AAVEUSDT","XRPUSDT","ADAUSDT","SUIUSDT","ENAUSDT","USDCUSDT","PEPEUSDT","LTCUSDT","LINKUSDT","HBARUSDT","AVAXUSDT","REDUSDT","BNXUSDT","PNUTUSDT","NEARUSDT","SUSDT","KAITOUSDT","EURUSDT","DOTUSDT","SHIBUSDT"]  # ✅ Add your preferred symbols
 
     for symbol in trading_pairs:
         try:
