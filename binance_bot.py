@@ -63,6 +63,9 @@ def check_trade_opportunity(trading_pairs):
 # 🔹 Fetch all trading pairs
 trading_pairs = get_all_trading_pairs()
 
+# 🔹 Send "Bot is working" message to Telegram
+send_telegram_message("🚀 Bot is working! Monitoring market for trade opportunities.")
+
 # 🔹 Continuous Monitoring
 print("🚀 Bot started... Monitoring market for trade opportunities.")
 
