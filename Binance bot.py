@@ -3,8 +3,8 @@ import time
 from binance.client import Client
 
 # 🔹 Replace with your actual Binance API credentials
-BINANCE_API_KEY = "1BBtdpnC7MzTjWiATnCbaVqYt5LdUKnxx9nRX7MbAa8cQW7W1qFcJEiAvTZKkKfn"
-BINANCE_SECRET_KEY = "ERhWgcoiBh5T9UrD9FL36tb3wrwMfiowBo43GiVp6RXdz0ZO6I3QGAjXMOA5HTFh"
+BINANCE_API_KEY = ""
+BINANCE_SECRET_KEY = ""
 
 # 🔹 Replace with your Telegram Bot Token & Chat ID
 TELEGRAM_BOT_TOKEN = "7915279765:AAFDKFPFRPH8A8BfYMAltdRF6k2sguEU2vc"
