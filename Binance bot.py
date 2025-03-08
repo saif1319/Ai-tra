@@ -3,12 +3,12 @@ import time
 from binance.client import Client
 
 # 🔹 Replace with your actual Binance API credentials
-BINANCE_API_KEY = "YOUR BINANCE API KEY"
-BINANCE_SECRET_KEY = "YOUR BINANCE SECRET KEY"
+BINANCE_API_KEY = "YOUR_BINANCE_API_KEY"
+BINANCE_SECRET_KEY = "YOUR_BINANCE_SECRET_KEY"
 
 # 🔹 Replace with your Telegram Bot Token & Chat ID
-TELEGRAM_BOT_TOKEN = "TELEGRAM_BOT TOKEN"
-TELEGRAM_CHAT_ID = "TELEGRAM VHAT ID"
+TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+TELEGRAM_CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"
 
 # 🔹 Initialize Binance Client with correct TLD
 client = Client(BINANCE_API_KEY, BINANCE_SECRET_KEY, tld="com")
