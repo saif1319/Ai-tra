@@ -3,15 +3,15 @@ import time
 from binance.client import Client
 
 # 🔹 Replace with your actual Binance API credentials
-BINANCE_API_KEY = "YOUR_BINANCE_API_KEY"
-BINANCE_SECRET_KEY = "YOUR_BINANCE_SECRET_KEY"
+BINANCE_API_KEY = "YOUR_API_KEY"
+BINANCE_SECRET_KEY = "YOUR_SECRET_KEY"
 
 # 🔹 Replace with your Telegram Bot Token & Chat ID
 TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 TELEGRAM_CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"
 
-# 🔹 Initialize Binance Client with correct TLD
-client = Client(BINANCE_API_KEY, BINANCE_SECRET_KEY, tld="us")
+# 🔹 Initialize Binance Client
+client = Client(BINANCE_API_KEY, BINANCE_SECRET_KEY, tld="com")
 
 # 🔹 Function to send trade signals to Telegram
 def send_telegram_message(message):
@@ -20,10 +20,19 @@ def send_telegram_message(message):
     response = requests.post(url, data=data)
     return response.json()
 
-# 🔹 Function to check trade opportunity
-def check_trade_opportunity():
-    trading_pairs = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT","TRUMPUSDT","AAVEUSDT","XRPUSDT","ADAUSDT","SUIUSDT","ENAUSDT","USDCUSDT","PEPEUSDT","LTCUSDT","LINKUSDT","HBARUSDT","AVAXUSDT","REDUSDT","BNXUSDT","PNUTUSDT","NEARUSDT","SUSDT","KAITOUSDT","EURUSDT","DOTUSDT","SHIBUSDT"]  # ✅ Add your preferred symbols
+# 🔹 Function to fetch all available trading pairs from Binance
+def get_all_trading_pairs():
+    try:
+        exchange_info = client.get_exchange_info()
+        pairs = [symbol['symbol'] for symbol in exchange_info['symbols'] if symbol['status'] == 'TRADING']
+        print(f"✅ Found {len(pairs)} trading pairs.")
+        return pairs
+    except Exception as e:
+        print(f"❌ Error fetching trading pairs: {e}")
+        return []
 
+# 🔹 Function to check trade opportunity
+def check_trade_opportunity(trading_pairs):
     for symbol in trading_pairs:
         try:
             price = float(client.get_symbol_ticker(symbol=symbol)["price"])
@@ -43,20 +52,22 @@ def check_trade_opportunity():
                 📈 Take-Profit: ${take_profit}
                 """
                 send_telegram_message(trade_signal)
+                print(f"✅ Trade opportunity detected for {symbol}! Alert sent.")
                 return True  # ✅ Trade found
 
         except Exception as e:
-            print(f"Error fetching {symbol} price: {e}")
+            print(f"⚠️ Error fetching {symbol} price: {e}")
 
     return False  # ❌ No trade found
+
+# 🔹 Fetch all trading pairs
+trading_pairs = get_all_trading_pairs()
 
 # 🔹 Continuous Monitoring
 print("🚀 Bot started... Monitoring market for trade opportunities.")
 
 while True:
-    trade_found = check_trade_opportunity()
+    if check_trade_opportunity(trading_pairs):
+        print("✅ Trade alert sent.")
 
-    if trade_found:
-        print("✅ Trade opportunity detected! Alert sent.")
-
-    time.sleep(60)  # 🔹 Wait 60 seconds before checking again
+    time.sleep(60)  # 🔹 Wait 60 seconds before checking again.
