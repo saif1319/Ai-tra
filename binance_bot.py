@@ -11,7 +11,7 @@ TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 TELEGRAM_CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"
 
 # 🔹 Initialize Binance Client with correct TLD
-client = Client(BINANCE_API_KEY, BINANCE_SECRET_KEY, tld="com")
+client = Client(BINANCE_API_KEY, BINANCE_SECRET_KEY, tld="us")
 
 # 🔹 Function to send trade signals to Telegram
 def send_telegram_message(message):
