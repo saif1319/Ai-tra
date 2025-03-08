@@ -7,8 +7,8 @@ BINANCE_API_KEY = ""
 BINANCE_SECRET_KEY = ""
 
 # 🔹 Replace with your Telegram Bot Token & Chat ID
-TELEGRAM_BOT_TOKEN = "7915279765:AAFDKFPFRPH8A8BfYMAltdRF6k2sguEU2vc"
-TELEGRAM_CHAT_ID = "1800767647"
+TELEGRAM_BOT_TOKEN = ""
+TELEGRAM_CHAT_ID = ""
 
 # 🔹 Initialize Binance Client with correct TLD
 client = Client(BINANCE_API_KEY, BINANCE_SECRET_KEY, tld="com")
